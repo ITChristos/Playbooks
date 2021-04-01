@@ -1,0 +1,12 @@
+all:
+  hosts:
+    VMs
+  children:
+    controllers:
+      hosts:
+        controller
+    hosts:
+      hosts:
+        host1
+        host2
+        host3
