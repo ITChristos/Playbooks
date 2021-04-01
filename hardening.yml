@@ -1,6 +1,5 @@
----
 - name: Upgrade all packages to latest version
-  ansible.builtin.apt:
-      hosts: all
-      name: "*"
-      state: latest
+  apt:
+    hosts: all
+    name: "*"
+    state: latest
