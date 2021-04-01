@@ -1,12 +1,11 @@
 - name: Harden Linux VMs
   hosts: all
+  become: yes
   tasks:
   - name: Run equivalent of apt-get update
     apt:
-      become: yes
       update_cache: yes
   - name: Upgrade all packages to latest versions
     apt:
-      become: yes
       name: "*"
       state: latest
