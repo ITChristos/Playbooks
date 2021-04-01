@@ -1,5 +1,5 @@
 # resolve in /etc/hosts (i.e x.x.x.x host1)
-[local]
+[controller]
 localhost ansible_connection=local
 
 [hosts]
