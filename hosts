@@ -2,9 +2,6 @@
 [local]
 localhost ansible_connection=local
 
-[controllers]
-controller
-
 [hosts]
 host1
 host2
