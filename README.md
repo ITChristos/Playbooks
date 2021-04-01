@@ -13,5 +13,8 @@ modify hosts file to list inventory in INI format (Ansible/hosts)
 run shell command ad-hoc
     ansible all -m shell -a "uptime"
 
-
+Failed to connect to the host via ssh: Permission denies (publickey,password)
+    nano hosts
+        [local]
+        localhost ansible_connection=local
 
