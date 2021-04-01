@@ -1,4 +1,4 @@
-# resolve in /etc/hosts
+# resolve in /etc/hosts (i.e x.x.x.x host1)
 [controllers]
 controller
 
