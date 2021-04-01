@@ -10,5 +10,8 @@ change ansible.cfg
 
 modify hosts file to list inventory in INI format (Ansible/hosts)
 
+run shell command ad-hoc
+    ansible all -m shell -a "uptime"
+
 
 
