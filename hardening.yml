@@ -1,5 +1,7 @@
-- name: Upgrade all packages to latest version
-  apt:
-    hosts: all
-    name: "*"
-    state: latest
+- name: Harden Linux VMs
+  hosts: all
+  tasks:
+  - name: Upgrade all packages to latest versions
+    apt:
+      name: "*"
+      state: latest
