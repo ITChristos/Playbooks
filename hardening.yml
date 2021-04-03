@@ -9,3 +9,8 @@
     apt:
       name: "*"
       state: latest
+  - name: Add the user "'tyr' with a primary group 'admin'
+      ansible.builtin.user:
+        name: tyr
+        group: admin
+        
