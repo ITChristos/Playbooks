@@ -1,16 +1,23 @@
-- name: Harden Linux VMs
-  hosts: all
+---
+- name: Harden all systems
+  hosts: controller
   become: yes
   tasks:
-  - name: Run equivalent of apt-get update
-    apt:
-      update_cache: yes
-  - name: Upgrade all packages to latest versions
-    apt:
-      name: "*"
-      state: latest
-  - name: Add the user "'tyr' with a primary group 'admin'
-    ansible.builtin.user:
-        name: tyr
-        group: admin
-        
+    - name: Ensure latest Git and Ansible packages
+      become: yes
+      ansible.builtin.package:
+        name:
+          - ansible
+          - git
+        state: latest
+
+- name: STIG Hardening
+  hosts: hosts
+  vars:
+    ansible_become: true
+  roles:
+  - role: ansible_hardening
+    vars:
+      stig_version: rhel7
+      security_enable_pwquality_password_set: yes
+      security_password_max_lifetime_days: 90
