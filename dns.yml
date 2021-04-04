@@ -1,0 +1,27 @@
+---
+- name: Configure Dnsmasq on Host2
+  hosts: dns servers
+  become: yes
+  tasks:
+  
+  - name: Update Package lists
+    hosts: dns servers
+#
+    tasks:
+    - name: Run equivalent of apt-get update
+      apt:
+        update_cache: yes
+    - name: Ensure latest Dnsmasq package
+#      become: yes
+      ansible.builtin.package:
+        name:
+          - Dnsmasq
+        state: latest
+
+  - name: Deconflict systemd-resolve by disabling/stopping the daemon
+#    become: yes
+    ansible.builtin.systemd:
+      name:
+        - systemd-resolved
+      enable: no
+      state: stopped

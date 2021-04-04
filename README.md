@@ -28,3 +28,14 @@ Installing Ansible Hardening roles from Openstack using ansible-galaxy
 or using git
     mkdir -p ~/.ansible/roles/
     git clone https://github.com/openstack/ansible-hardening ~/.ansible/roles/ansible-hardening
+
+#############################################################################################################
+
+Configure Dnsmasq as a DNS server on Host 1
+
+Add group dns servers to hosts file
+
+run dns.yml playbook
+
+
+
