@@ -37,8 +37,7 @@
         owner: root
         group: root
         mode: '0644'
-...
----
+
 - name: Configure hosts list on all nodes
   hosts: all  
   become: yes
