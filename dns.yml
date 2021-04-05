@@ -9,10 +9,10 @@
         name: systemd-resolved.service
         state: stopped
 
-    - name: Update Package lists
-      become: yes
-      apt:
-        update_cache: yes
+    # - name: Update Package lists
+    #   become: yes
+    #   apt:
+    #     update_cache: yes
     
     - name: Ensure latest Dnsmasq package
       become: yes
