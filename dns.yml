@@ -7,7 +7,6 @@
     - name: Deconflict systemd-resolve by disabling/stopping the daemon
       ansible.builtin.systemd:
         name: systemd-resolved.service
-        become: yes
         state: stopped
 
     - name: Update Package lists
