@@ -39,7 +39,6 @@
         mode: '0644'
 
     - name: Template a file to /etc/hosts
-      hosts: all
       become: yes
       ansible.builtin.template:
         src: ./Templates/hosts
