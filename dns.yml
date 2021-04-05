@@ -27,4 +27,4 @@
         path: /etc/dnsmasq.conf
         regexp: 'port='
         insertafter: '#port='
-        line: 53
+        line: Port=53
