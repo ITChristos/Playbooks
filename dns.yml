@@ -8,6 +8,8 @@
       become: yes
       apt:
         update_cache: yes
+      tags:
+      - update
     
     - name: Ensure latest Dnsmasq package
       become: yes
