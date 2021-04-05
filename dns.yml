@@ -4,11 +4,6 @@
   become: yes
   tasks:
 
-    # - name: Deconflict systemd-resolve by disabling/stopping the daemon
-    #   ansible.builtin.systemd:
-    #     name: systemd-resolved.service
-    #     state: started
-
     - name: Update Package lists
       become: yes
       apt:
@@ -43,3 +38,13 @@
         owner: root
         group: root
         mode: '0644'
+
+- name: Disable systemd-resolved.service
+  hosts: dns_servers
+  become: yes
+  tasks:
+
+    - name: Deconflict systemd-resolve by disabling/stopping the daemon
+      ansible.builtin.systemd:
+        name: systemd-resolved.service
+        state: stopped
