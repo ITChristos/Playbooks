@@ -48,3 +48,9 @@
       ansible.builtin.systemd:
         name: systemd-resolved.service
         state: stopped
+
+    - name: Restart dnsmasq.service
+      become: yes
+      ansible.builtin.systemd:
+        name: dnsmasq.service
+        state: restarted
