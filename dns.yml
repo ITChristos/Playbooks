@@ -10,18 +10,19 @@
         state: stopped
 
     - name: Update Package lists
+      become: yes
       apt:
-        become: yes
         update_cache: yes
     
     - name: Ensure latest Dnsmasq package
+      become: yes
       ansible.builtin.package:
-        become: yes
         name:
           - dnsmasq
         state: latest
 
     - name: Configure default dnsmasq port
+      become: yes
       ansible.builtin.lineinfile:
         path: /etc/dnsmasq.conf
         regexp: 'port='
