@@ -7,5 +7,5 @@ host1
 host2
 host3
 
-[dnsservers]
+[dns_servers]
 host1

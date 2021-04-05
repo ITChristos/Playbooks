@@ -1,6 +1,6 @@
 ---
 - name: Configure Dnsmasq on Host2
-  hosts: dns servers
+  hosts: dns_servers
   become: yes
   tasks:
     - name: Update Package lists
