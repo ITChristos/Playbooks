@@ -47,7 +47,7 @@
       become: yes 
       ansible.builtin.template:
         src: ./Templates/hosts
-        dest: /etc/host
+        dest: /etc/hosts
         owner: root
         group: root
         mode: '0644'
