@@ -3,9 +3,9 @@
 localhost ansible_connection=local
 
 [hosts]
-host1
-host2
-host3
+10.1.2.4
+10.1.2.5
+10.1.2.6
 
 [dns_servers]
-host1
+10.1.2.4
