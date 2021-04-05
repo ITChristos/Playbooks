@@ -28,3 +28,12 @@
         regexp: 'port='
         insertafter: '#port='
         line: Port=53
+
+    - name: Template a file to /etc/file.conf
+      become: yes
+      ansible.builtin.template:
+        src: ./Templates/dnsmasq.conf
+        dest: /etc/dnsmasq.conf
+        owner: root
+        group: root
+        mode: '0644'
