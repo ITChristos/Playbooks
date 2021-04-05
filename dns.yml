@@ -5,7 +5,6 @@
   tasks:
   
   - name: Update Package lists
-    hosts: dns servers
     tasks:
     - name: Run equivalent of apt-get update
       apt:
