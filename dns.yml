@@ -27,6 +27,10 @@
         group: root
         mode: '0644'
 
+    - name: Configure NetworkManager.conf to use dnsmasq
+      become: yes
+
+
 - name: Configure hosts list on all nodes
   hosts: all  
   become: yes
@@ -49,7 +53,8 @@
     - name: Deconflict systemd-resolve by disabling/stopping the daemon
       ansible.builtin.systemd:
         name: systemd-resolved.service
-        state: stopped
+        state: started
+        # masked: yes
 
     - name: Restart dnsmasq.service
       become: yes
