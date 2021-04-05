@@ -21,14 +21,6 @@
           - dnsmasq
         state: latest
 
-    - name: Configure default dnsmasq port
-      become: yes
-      ansible.builtin.lineinfile:
-        path: /etc/dnsmasq.conf
-        regexp: 'port='
-        insertafter: '#port='
-        line: Port=53
-
     - name: Template a file to /etc/dnsmasq.conf
       become: yes
       ansible.builtin.template:
