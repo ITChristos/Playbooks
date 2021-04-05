@@ -7,14 +7,17 @@
     - name: Deconflict systemd-resolve by disabling/stopping the daemon
       ansible.builtin.systemd:
         name: systemd-resolved.service
+        become: yes
         state: stopped
 
     - name: Update Package lists
       apt:
+        become: yes
         update_cache: yes
     
     - name: Ensure latest Dnsmasq package
       ansible.builtin.package:
+        become: yes
         name:
           - dnsmasq
         state: latest
