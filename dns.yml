@@ -37,9 +37,15 @@
         owner: root
         group: root
         mode: '0644'
+...
+---
+- name: Configure hosts list on all nodes
+  hosts: all  
+  become: yes
+  tasks:
 
-    - name: Template a file to /etc/hosts
-      become: yes
+    - name:
+      become: yes 
       ansible.builtin.template:
         src: ./Templates/hosts
         dest: /etc/host
