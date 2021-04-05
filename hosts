@@ -6,3 +6,6 @@ localhost ansible_connection=local
 host1
 host2
 host3
+
+[dns_servers]
+host1
