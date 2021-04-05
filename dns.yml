@@ -54,7 +54,7 @@
       ansible.builtin.systemd:
         name: systemd-resolved.service
         state: started
-        # masked: yes
+        masked: no
 
     - name: Restart dnsmasq.service
       become: yes
