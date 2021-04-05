@@ -3,24 +3,24 @@
   hosts: dns servers
   become: yes
   tasks:
-  - name: Update Package lists
-    tasks:
-    - name: Run equivalent of apt-get update
-      apt:
-        update_cache: yes
-    - name: Ensure latest Dnsmasq package
-      ansible.builtin.package:
+    - name: Update Package lists
+      tasks:
+      - name: Run equivalent of apt-get update
+        apt:
+          update_cache: yes
+      - name: Ensure latest Dnsmasq package
+        ansible.builtin.package:
+          name:
+            - Dnsmasq
+          state: latest
+
+    - name: Deconflict systemd-resolve by disabling/stopping the daemon
+      ansible.builtin.systemd:
         name:
-          - Dnsmasq
-        state: latest
+          - systemd-resolved
+        enable: no
+        state: stopped
 
-  - name: Deconflict systemd-resolve by disabling/stopping the daemon
-    ansible.builtin.systemd:
-      name:
-        - systemd-resolved
-      enable: no
-      state: stopped
-
-  # - name: Configure Dnsmasq config file
-  #   ansible.builtin.lineinfile:
-  #     name: 
+    # - name: Configure Dnsmasq config file
+    #   ansible.builtin.lineinfile:
+    #     name: 
