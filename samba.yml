@@ -1,0 +1,17 @@
+---
+- name: Create Samba share on Host2 accessible to Host3
+  hosts: file_servers
+  become: yes
+  tasks:
+
+    - name: Update Packages
+      apt:
+        update_cache: yes
+      tags:
+      - update
+
+    - name: Ensure latest Samba package
+      ansible.builtin.package:
+        name:
+          - samba
+        state: latest

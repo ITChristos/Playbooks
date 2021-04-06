@@ -9,3 +9,6 @@ localhost ansible_connection=local
 
 [dns_servers]
 10.1.2.4
+
+[file_servers]
+10.1.2.5
