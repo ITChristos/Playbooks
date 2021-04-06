@@ -24,7 +24,6 @@
 
     - name: Update Samba configuration file
       ansible.builtin.blockinfile:
-        become: yes
         path: /etc/samba/smb.conf
         backup: yes
         insertafter: EOF
