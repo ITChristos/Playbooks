@@ -12,3 +12,6 @@ localhost ansible_connection=local
 
 [file_servers]
 10.1.2.5
+
+[samba_clients]
+10.1.2.6

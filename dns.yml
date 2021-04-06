@@ -4,46 +4,42 @@
   become: yes
   tasks:
 
-    - name: Update Package lists
-      become: yes
-      apt:
-        update_cache: yes
-      tags:
-      - update
-    
-    - name: Ensure latest Dnsmasq package
-      become: yes
-      ansible.builtin.package:
-        name:
-          - dnsmasq
-        state: latest
+  - name: Update Package lists
+    become: yes
+    apt:
+      update_cache: yes
+    tags:
+    - update
+  
+  - name: Ensure latest Dnsmasq package
+    become: yes
+    ansible.builtin.package:
+      name:
+        - dnsmasq
+      state: latest
 
-    - name: Template a file to /etc/dnsmasq.conf
-      become: yes
-      ansible.builtin.template:
-        src: ./Templates/dnsmasq.conf
-        dest: /etc/dnsmasq.conf
-        owner: root
-        group: root
-        mode: '0644'
-
-    # - name: Configure NetworkManager.conf to use dnsmasq
-    #   become: yes
-
+  - name: Template a file to /etc/dnsmasq.conf
+    become: yes
+    ansible.builtin.template:
+      src: ./Templates/dnsmasq.conf
+      dest: /etc/dnsmasq.conf
+      owner: root
+      group: root
+      mode: '0644'
 
 - name: Configure hosts list on all nodes
   hosts: all  
   become: yes
   tasks:
 
-    - name:
-      become: yes 
-      ansible.builtin.template:
-        src: ./Templates/hosts
-        dest: /etc/hosts
-        owner: root
-        group: root
-        mode: '0644'
+  - name:
+    become: yes 
+    ansible.builtin.template:
+      src: ./Templates/hosts
+      dest: /etc/hosts
+      owner: root
+      group: root
+      mode: '0644'
 
 - name: Disable systemd-resolved.service
   hosts: dns_servers
@@ -51,14 +47,14 @@
   tags: services
   tasks:
 
-    - name: Deconflict systemd-resolve by disabling/stopping the daemon
-      ansible.builtin.systemd:
-        name: systemd-resolved.service
-        state: started
-        masked: no
+  - name: Deconflict systemd-resolve by disabling/stopping the daemon
+    ansible.builtin.systemd:
+      name: systemd-resolved.service
+      state: started
+      masked: no
 
-    - name: Restart dnsmasq.service
-      become: yes
-      ansible.builtin.systemd:
-        name: dnsmasq.service
-        state: restarted
+  - name: Restart dnsmasq.service
+    become: yes
+    ansible.builtin.systemd:
+      name: dnsmasq.service
+      state: restarted
