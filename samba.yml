@@ -18,6 +18,18 @@
 
     - name: Create directory for share
       ansible.builtin.file:
-        name: sambashare
-        path: /home
+        path: /home/sambashare
         state: directory
+        mode: '0755'
+
+    - name: Update Samba configuration file
+      ansible.builtin.blockinfile:
+        path: /etc/samba/smb.conf
+        backup: yes
+        insertafter: EOF
+        block: |
+          [sambashare]
+            comment = Samba on Ubuntu
+            path = /home/username/sambashare
+            read only = no
+            browsable = yes
