@@ -47,6 +47,6 @@
   - name: Mount Samba share from Host2
     mount:
       state: "mounted"
-      fstype: "samba"
+      fstype: "cifs"
       name: /mnt/sambashare
       src: "//10.1.2.5/sambashare"
