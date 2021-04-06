@@ -16,11 +16,8 @@
           - samba
         state: latest
 
-    - name: Create a shared folder
-      community.general.udm_share:
-        name: Samba_share
+    - name: Create directory for share
+      ansible.builtin.file:
+        name: sambashare
         path: /home
-        host: file_servers
-        sambaName: Home
-        state: present
-        ou: tyr
+        state: directory

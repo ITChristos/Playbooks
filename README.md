@@ -37,5 +37,9 @@ Add group dns servers to hosts file
 
 run dns.yml playbook
 
+##############################################################################################################
 
+add ansible galaxy module
+
+ansible-galaxy collection install community.general
 
