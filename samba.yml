@@ -20,6 +20,7 @@
     ansible.builtin.file:
       path: /home/sambashare
       state: directory
+      owner: tyr-admin
       mode: '0755'
 
   - name: Update Samba configuration file
