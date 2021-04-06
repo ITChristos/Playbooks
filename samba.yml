@@ -51,3 +51,4 @@
       fstype: "cifs"
       name: /mnt/sambashare
       src: "//10.1.2.5/sambashare"
+      opts: "credentials=/root/.smb_passwords,file_mode=0644,dir_mode=0755,gid=root,uid=root"
