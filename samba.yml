@@ -15,3 +15,11 @@
         name:
           - samba
         state: latest
+
+    - name: Create a shared folder
+      community.general.udm_share:
+        name: Samba_share
+        path: /home
+        host: file_servers
+        sambaName: Home
+        state: present
