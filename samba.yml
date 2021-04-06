@@ -33,3 +33,8 @@
             path = /home/username/sambashare
             read only = no
             browsable = yes
+
+    - name: Restart samba service
+      ansible.builtin.systemd:
+        name: smbd.service
+        state: restarted
