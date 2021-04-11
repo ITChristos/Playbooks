@@ -1,5 +1,5 @@
 ---
-- name: Create Samba share on Host2 accessible to Host3
+- name: Create Samba share on Host2
   hosts: file_servers
   become: yes
   tasks:
@@ -50,5 +50,5 @@
       state: "mounted"
       fstype: "cifs"
       name: /mnt/sambashare
-      src: "//10.1.2.5/sambashare"
+      src: "//10.1.2.5/home/sambashare"
       opts: "credentials=/root/.smb_passwords,file_mode=0644,dir_mode=0755,gid=root,uid=root"
