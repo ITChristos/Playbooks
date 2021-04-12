@@ -76,4 +76,4 @@
         browseable: 'yes'
 
   roles:
-    - role: bertvv.samba
+    - role: ansible-role-samba
