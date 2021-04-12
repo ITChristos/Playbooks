@@ -23,7 +23,7 @@
       owner: tyr-admin
       mode: '0755'
 
-  - name: Ensure group "somegroup" exists
+  - name: Ensure group "sambausers" exists
     ansible.builtin.group:
       name: sambausers
       state: present
@@ -64,7 +64,7 @@
 
   - name: Install smbclient
     apt:
-      name: smbclient
+      name: samba-client
       state: present
 
   # - name: Mount Samba share from Host2
