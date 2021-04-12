@@ -23,6 +23,17 @@
       owner: tyr-admin
       mode: '0755'
 
+  - name: Ensure group "somegroup" exists
+    ansible.builtin.group:
+      name: sambausers
+      state: present
+
+  - name: Add user to samba group
+    ansible.builtin.user:
+      name: tyr-admin
+      groups: sambausers
+      append: yes
+
   - name: Update Samba configuration file
     ansible.builtin.blockinfile:
       path: /etc/samba/smb.conf
@@ -34,12 +45,18 @@
           path = /home/username/sambashare
           read only = no
           browsable = yes
+          valid users = tyr-admin @sambausers
 
   - name: Restart samba service
     ansible.builtin.systemd:
        name: smbd.service
        state: restarted
 
+  - name: Configure Firewall to allow Samba
+    community.general.ufw:
+      rule: allow
+      name: Samba
+  
 - name: Configure Samba clients
   hosts: samba_clients
   become: yes
