@@ -62,10 +62,16 @@
   become: yes
   tasks:
 
-  - name: Mount Samba share from Host2
-    mount:
-      state: "mounted"
-      fstype: "cifs"
-      name: /mnt/sambashare
-      src: "//10.1.2.5/home/sambashare"
-      opts: "credentials=/root/.smb_passwords,file_mode=0644,dir_mode=0755,gid=root,uid=root"
+  - name: Install smbclient
+    apt:
+      name: smbclient
+      state: present
+
+  # - name: Mount Samba share from Host2
+  #   mount:
+  #     src: //path/to/windows/share
+  #     path: /mnt
+  #     fstype: cifs
+  #     opts: 'username=tyr-admin,password=password'
+  #     state: mounted
+  #   become: true
